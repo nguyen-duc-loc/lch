@@ -9,6 +9,11 @@ help:
 docs:
 	@go run main.go docs -d ./docs
 
+## test: test all code
+.PHONY: test
+test:
+	@go test -v -race -vet=off ./...
+
 ## vendor: tidy and vendor dependencies
 .PHONY: vendor
 vendor:
@@ -27,7 +32,7 @@ audit: vendor
 	@go vet ./...
 	@staticcheck ./...
 	@echo "Running tests..."
-	@go test -race -vet=off ./...
+	@go test -v -race -vet=off ./...
 
 ## build: build the CLI application
 .PHONY: build
