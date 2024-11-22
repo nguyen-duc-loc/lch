@@ -27,6 +27,9 @@ type Leetcode struct {
 	UserContestInfo interface {
 		GetByUsername(string) (*UserContestInfo, error)
 	}
+	Stats interface {
+		GetByUsername(string) (*Stats, error)
+	}
 }
 
 func New() *Leetcode {
@@ -37,6 +40,7 @@ func New() *Leetcode {
 		Solutions:       &SolutionService{client},
 		Profiles:        &ProfileService{client},
 		UserContestInfo: &UserContestInfoService{client},
+		Stats:           &StatsService{client},
 	}
 }
 

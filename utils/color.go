@@ -40,6 +40,12 @@ func GreenText(s string) string {
 	return green.Sprintf("%s", s)
 }
 
+func YellowText(s string) string {
+	yellow := color.New(color.FgYellow)
+
+	return yellow.Sprintf("%s", s)
+}
+
 func WhiteText(s string) string {
 	white := color.New(color.FgWhite)
 
