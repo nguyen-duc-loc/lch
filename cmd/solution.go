@@ -54,8 +54,7 @@ var solutionCmd = &cobra.Command{
 Or you can get the solution to the today challenge problem by running:
   lch solution today [flags]
 	`,
-	Args:         cobra.MinimumNArgs(1),
-	SilenceUsage: true,
+	Args: cobra.MinimumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) > 1 {
 			return errors.New("too many arguments")

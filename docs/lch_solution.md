@@ -17,7 +17,7 @@ lch solution <problem_id> [flags]
 
 ```
   -h, --help              help for solution
-  -l, --language string   Choose your favorite language. Available options include: "cpp", "java", "py", "ts", "sql", "sh"
+  -l, --language string   Choose your favorite language. Available options include: "sh", "cpp", "java", "py", "ts", "sql"
 ```
 
 ### SEE ALSO
