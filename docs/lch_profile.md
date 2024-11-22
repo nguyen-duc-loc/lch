@@ -1,16 +1,16 @@
-## lch docs
+## lch profile
 
-Generate documentation for your commands
+View user's profile
 
 ```
-lch docs [flags]
+lch profile [flags]
 ```
 
 ### Options
 
 ```
-  -d, --destination string   Destination directory for documentation
-  -h, --help                 help for docs
+  -h, --help              help for profile
+  -u, --username string   username to view profile
 ```
 
 ### SEE ALSO
