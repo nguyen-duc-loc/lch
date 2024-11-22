@@ -1,16 +1,16 @@
-## lch docs
+## lch stats
 
-Generate documentation for your commands
+Get statistics about a user's solving problem process
 
 ```
-lch docs [flags]
+lch stats [flags]
 ```
 
 ### Options
 
 ```
-  -d, --destination string   Destination directory for documentation
-  -h, --help                 help for docs
+  -h, --help              help for stats
+  -u, --username string   username to view stats
 ```
 
 ### SEE ALSO
