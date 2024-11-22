@@ -24,15 +24,19 @@ type Leetcode struct {
 	Profiles interface {
 		GetByUsername(string) (*Profile, error)
 	}
+	UserContestInfo interface {
+		GetByUsername(string) (*UserContestInfo, error)
+	}
 }
 
 func New() *Leetcode {
 	client := graphql.NewClient("https://leetcode.com/graphql")
 
 	return &Leetcode{
-		Problems:  &ProblemService{client},
-		Solutions: &SolutionService{client},
-		Profiles:  &ProfileService{client},
+		Problems:        &ProblemService{client},
+		Solutions:       &SolutionService{client},
+		Profiles:        &ProfileService{client},
+		UserContestInfo: &UserContestInfoService{client},
 	}
 }
 
@@ -54,6 +58,27 @@ func FormattedGlobalRanking(rank uint64) string {
 
 	default:
 		return utils.WhiteText(rankInText)
+	}
+}
+
+func FormattedContestRating(rating uint16) string {
+	ratingInText := fmt.Sprintf("%d", rating)
+
+	switch {
+	case rating < 1700:
+		return utils.WhiteText(ratingInText)
+
+	case rating < 1900:
+		return utils.BlueText(ratingInText)
+
+	case rating < 2100:
+		return utils.MagentaText(ratingInText)
+
+	case rating < 2400:
+		return utils.OrangeText(ratingInText)
+
+	default:
+		return utils.RedText(ratingInText)
 	}
 }
 
