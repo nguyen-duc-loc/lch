@@ -81,6 +81,7 @@ func ratingActions(out io.Writer, username string) error {
 	}
 
 	tw := table.NewWriter()
+	tw.SetStyle(table.StyleLight)
 	tw.SetTitle(utils.BoldText("Recently attended contests"))
 	tw.AppendHeader(rowHeader)
 	tw.SetColumnConfigs([]table.ColumnConfig{
