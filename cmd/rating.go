@@ -68,9 +68,9 @@ func ratingActions(out io.Writer, username string) error {
 
 	formattedOut := ""
 	formattedOut += outputInfo("Contest attended", fmt.Sprintf("%d", userContestInfo.AttendedContestsCount))
-	formattedOut += outputInfo("Rating", leetcode.FormattedContestRating(userContestInfo.Rating))
-	formattedOut += outputInfo("Global ranking", leetcode.FormattedGlobalRanking(userContestInfo.GlobalRanking))
-	formattedOut += outputInfo("Contest level", leetcode.FormattedContestLevel(userContestInfo.ContestLevel))
+	formattedOut += outputInfo("Rating", leetcode.FormatContestRating(userContestInfo.Rating))
+	formattedOut += outputInfo("Global ranking", leetcode.FormatGlobalRanking(userContestInfo.GlobalRanking))
+	formattedOut += outputInfo("Contest level", leetcode.FormatContestLevel(userContestInfo.ContestLevel))
 
 	attendedContests := userContestInfo.AttendedContests
 	attendedContests = append(attendedContests, leetcode.Contest{
@@ -103,7 +103,7 @@ func ratingActions(out io.Writer, username string) error {
 
 		tw.AppendRow(table.Row{
 			contest.Metadata.Title,
-			fmt.Sprintf("%s (%s)", leetcode.FormattedContestRating(contest.Rating), ratingDiffInText),
+			fmt.Sprintf("%s (%s)", leetcode.FormatContestRating(contest.Rating), ratingDiffInText),
 			utils.FormatTime(int64(contest.FinishTimeInSeconds)),
 			fmt.Sprintf("%d/%d", contest.ProblemsSolved, contest.Metadata.TotalProblems),
 			contest.Ranking,

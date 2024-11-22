@@ -57,8 +57,8 @@ func profileActions(out io.Writer, username string) error {
 	formattedOut += outputInfo("Github", profile.SocialURL.Github)
 	formattedOut += outputInfo("Linkedin", profile.SocialURL.Linkedin)
 	formattedOut += outputInfo("Skills", strings.Join(profile.Skills, ", "))
-	formattedOut += outputInfo("Global ranking", leetcode.FormattedGlobalRanking(profile.GlobalRanking))
-	formattedOut += outputInfo("Contest level", leetcode.FormattedContestLevel(profile.ContestLevel))
+	formattedOut += outputInfo("Global ranking", leetcode.FormatGlobalRanking(profile.GlobalRanking))
+	formattedOut += outputInfo("Contest level", leetcode.FormatContestLevel(profile.ContestLevel))
 
 	_, err = fmt.Fprint(out, formattedOut)
 	return err

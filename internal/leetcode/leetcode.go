@@ -40,7 +40,7 @@ func New() *Leetcode {
 	}
 }
 
-func FormattedGlobalRanking(rank uint64) string {
+func FormatGlobalRanking(rank uint64) string {
 	rankInText := fmt.Sprintf("%d", rank)
 
 	switch {
@@ -61,7 +61,7 @@ func FormattedGlobalRanking(rank uint64) string {
 	}
 }
 
-func FormattedContestRating(rating uint16) string {
+func FormatContestRating(rating uint16) string {
 	ratingInText := fmt.Sprintf("%d", rating)
 
 	switch {
@@ -82,7 +82,7 @@ func FormattedContestRating(rating uint16) string {
 	}
 }
 
-func FormattedContestLevel(level string) string {
+func FormatContestLevel(level string) string {
 	switch {
 	case level == "":
 		return ""
