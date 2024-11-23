@@ -10,7 +10,7 @@ lch stats [flags]
 
 ```
   -h, --help              help for stats
-  -u, --username string   username to view stats
+  -u, --username string   username to view stats (default username can be defined in $HOME/.lch.yaml or by using [3m<lch config [flags]>[23m
 ```
 
 ### SEE ALSO

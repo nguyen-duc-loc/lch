@@ -25,6 +25,7 @@ lch [flags]
 ### SEE ALSO
 
 * [lch completion](lch_completion.md)	 - Generate the autocompletion script for the specified shell
+* [lch config](lch_config.md)	 - Config default your username and preferred language
 * [lch docs](lch_docs.md)	 - Generate documentation for your commands
 * [lch profile](lch_profile.md)	 - View user's profile
 * [lch rating](lch_rating.md)	 - Get information about a user's contest rating and his (her) recently attended contests
