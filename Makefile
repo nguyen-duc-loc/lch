@@ -13,6 +13,7 @@ docs:
 .PHONY: readme
 readme: docs
 	@cp docs/lch.md README.md
+	@echo "## Installation\n\n\`\`\`bash\ncurl -L https://github.com/nguyen-duc-loc/lch/releases/download/v0.0.1/lch.linux-amd64.tar.gz | tar xvz\nsudo mv lch /usr/bin/lch\n\`\`\`" >> README.md
 	@echo "README.md has been successfully created"
 
 ## test: test all code
