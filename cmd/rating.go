@@ -31,9 +31,11 @@ import (
 	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
 	"github.com/nguyen-duc-loc/leetcode-helper/utils"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 const (
+	ratingCmdUsernameFlag   = "username"
 	colTitleContestName     = "Contest"
 	colTitleRating          = "Rating"
 	colTitleFinishTime      = "Finish Time"
@@ -122,9 +124,17 @@ var ratingCmd = &cobra.Command{
 	Short: "Get information about a user's contest rating and his (her) recently attended contests",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		username, err := cmd.Flags().GetString("username")
+		username, err := cmd.Flags().GetString(ratingCmdUsernameFlag)
 		if err != nil {
 			return err
+		}
+
+		if username == "" {
+			username = viper.GetString(usernameConfigKey)
+		}
+
+		if username == "" {
+			return cmd.Usage()
 		}
 
 		return ratingActions(os.Stdout, username)
@@ -134,6 +144,5 @@ var ratingCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(ratingCmd)
 
-	ratingCmd.Flags().StringP("username", "u", "", "username to view rating contest and recently attended contests")
-	ratingCmd.MarkFlagRequired("username")
+	ratingCmd.Flags().StringP(ratingCmdUsernameFlag, "u", "", fmt.Sprintf("username to view rating contest and recently attended contests (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
 }

@@ -27,6 +27,12 @@ import (
 
 	"github.com/nguyen-duc-loc/leetcode-helper/utils"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+)
+
+const (
+	usernameConfigKey          = "username"
+	preferredLanguageConfigKey = "preferred_language"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -56,6 +62,32 @@ func Execute() {
 	}
 }
 
-func init() {
+func initConfig() {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 
+	viper.AddConfigPath(homeDir)
+	viper.SetConfigName(".lch")
+	viper.SetConfigType("yaml")
+
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			configFile, _ := os.Create(fmt.Sprintf("%s/.lch.yaml", homeDir))
+			defer configFile.Close()
+
+			viper.Set(usernameConfigKey, "")
+			viper.Set(preferredLanguageConfigKey, "")
+			viper.WriteConfig()
+		} else {
+			fmt.Println(err.Error())
+			os.Exit(1)
+		}
+	}
+}
+
+func init() {
+	cobra.OnInitialize(initConfig)
 }

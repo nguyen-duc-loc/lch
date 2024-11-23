@@ -32,6 +32,11 @@ import (
 
 	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+)
+
+const (
+	solutionCmdLanguageFlag = "language"
 )
 
 func solutionActions(out io.Writer, problemID int32, language string) error {
@@ -60,9 +65,17 @@ Or you can get the solution to the today challenge problem by running:
 			return errors.New("too many arguments")
 		}
 
-		language, err := cmd.Flags().GetString("language")
+		language, err := cmd.Flags().GetString(solutionCmdLanguageFlag)
 		if err != nil {
 			return err
+		}
+
+		if language == "" {
+			language = viper.GetString(preferredLanguageConfigKey)
+		}
+
+		if language == "" {
+			return cmd.Usage()
 		}
 
 		if args[0] == "today" {
@@ -91,6 +104,5 @@ func init() {
 	for k := range leetcode.AvailableLanguage {
 		extensions = append(extensions, fmt.Sprintf("%q", k))
 	}
-	solutionCmd.Flags().StringP("language", "l", "", fmt.Sprintf("Choose your favorite language. Available options include: %s", strings.Join(extensions, ", ")))
-	solutionCmd.MarkFlagRequired("language")
+	solutionCmd.Flags().StringP(solutionCmdLanguageFlag, "l", "", fmt.Sprintf("Choose your favorite language. Available options include: %s", strings.Join(extensions, ", ")))
 }

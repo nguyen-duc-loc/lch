@@ -10,6 +10,12 @@ func BoldText(s string) string {
 	return bold.Sprintf("%s", s)
 }
 
+func ItalicText(s string) string {
+	italic := color.New(color.Italic)
+
+	return italic.Sprintf("%s", s)
+}
+
 func RedText(s string) string {
 	red := color.New(color.FgRed)
 

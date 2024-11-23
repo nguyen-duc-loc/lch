@@ -25,14 +25,17 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sort"
 
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
 	"github.com/nguyen-duc-loc/leetcode-helper/utils"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 const (
+	statsCmdUsernameFlag               = "username"
 	colProblemDifficulty               = "Difficulty"
 	colSolvedProblemsCount             = "Solved"
 	colTotalProblemsCount              = "Total"
@@ -77,7 +80,7 @@ func statsActions(out io.Writer, username string) error {
 			coloredDifficulty[problem.Difficulty],
 			problem.ProblemsSolved,
 			problem.Total,
-			problem.Beat,
+			fmt.Sprintf("%.2f%%", problem.Beat),
 		})
 	}
 
@@ -95,7 +98,12 @@ func statsActions(out io.Writer, username string) error {
 		colSolvedProblemsWithLanguageCount,
 	})
 
-	for _, language := range stats.Languages {
+	languages := stats.Languages
+	sort.Slice(languages, func(i, j int) bool {
+		return languages[i].ProblemsSolved > languages[j].ProblemsSolved
+	})
+
+	for _, language := range languages {
 		languagesTw.AppendRow(table.Row{
 			language.Name,
 			language.ProblemsSolved,
@@ -105,6 +113,7 @@ func statsActions(out io.Writer, username string) error {
 	formattedOutput += problemsSolvedTw.Render()
 	formattedOutput += "\n"
 	formattedOutput += languagesTw.Render()
+	formattedOutput += "\n"
 
 	_, err = fmt.Fprint(out, formattedOutput)
 
@@ -117,9 +126,17 @@ var statsCmd = &cobra.Command{
 	Short: "Get statistics about a user's solving problem process",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		username, err := cmd.Flags().GetString("username")
+		username, err := cmd.Flags().GetString(statsCmdUsernameFlag)
 		if err != nil {
 			return err
+		}
+
+		if username == "" {
+			username = viper.GetString(usernameConfigKey)
+		}
+
+		if username == "" {
+			return cmd.Usage()
 		}
 
 		return statsActions(os.Stdout, username)
@@ -129,6 +146,5 @@ var statsCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(statsCmd)
 
-	statsCmd.Flags().StringP("username", "u", "", "username to view stats")
-	statsCmd.MarkFlagRequired("username")
+	statsCmd.Flags().StringP(statsCmdUsernameFlag, "u", "", fmt.Sprintf("username to view stats (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
 }

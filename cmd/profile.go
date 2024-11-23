@@ -30,6 +30,11 @@ import (
 	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
 	"github.com/nguyen-duc-loc/leetcode-helper/utils"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+)
+
+const (
+	profileCmdUsernameFlag = "username"
 )
 
 func outputInfo(field, value string) string {
@@ -48,7 +53,7 @@ func profileActions(out io.Writer, username string) error {
 		return err
 	}
 
-	formattedOut := "\n"
+	formattedOut := ""
 	formattedOut += outputInfo("Username", profile.Username)
 	formattedOut += outputInfo("Name", profile.RealName)
 	formattedOut += outputInfo("Bio", profile.Bio)
@@ -70,9 +75,17 @@ var profileCmd = &cobra.Command{
 	Short: "View user's profile",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		username, err := cmd.Flags().GetString("username")
+		username, err := cmd.Flags().GetString(profileCmdUsernameFlag)
 		if err != nil {
 			return err
+		}
+
+		if username == "" {
+			username = viper.GetString(usernameConfigKey)
+		}
+
+		if username == "" {
+			return cmd.Usage()
 		}
 
 		return profileActions(os.Stdout, username)
@@ -82,6 +95,5 @@ var profileCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(profileCmd)
 
-	profileCmd.Flags().StringP("username", "u", "", "username to view profile")
-	profileCmd.MarkFlagRequired("username")
+	profileCmd.Flags().StringP(profileCmdUsernameFlag, "u", "", fmt.Sprintf("username to view profile (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
 }
