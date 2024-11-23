@@ -28,8 +28,8 @@ import (
 
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/jedib0t/go-pretty/v6/text"
-	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
-	"github.com/nguyen-duc-loc/leetcode-helper/utils"
+	"github.com/nguyen-duc-loc/lch/internal/leetcode"
+	"github.com/nguyen-duc-loc/lch/utils"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

@@ -30,7 +30,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
+	"github.com/nguyen-duc-loc/lch/internal/leetcode"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

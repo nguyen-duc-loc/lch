@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/machinebox/graphql"
-	"github.com/nguyen-duc-loc/leetcode-helper/utils"
+	"github.com/nguyen-duc-loc/lch/utils"
 )
 
 const (

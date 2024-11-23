@@ -1,4 +1,4 @@
-module github.com/nguyen-duc-loc/leetcode-helper
+module github.com/nguyen-duc-loc/lch
 
 go 1.23.3
 

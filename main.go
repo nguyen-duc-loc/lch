@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/nguyen-duc-loc/leetcode-helper/cmd"
+import "github.com/nguyen-duc-loc/lch/cmd"
 
 func main() {
 	cmd.Execute()

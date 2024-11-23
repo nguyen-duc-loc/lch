@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/nguyen-duc-loc/leetcode-helper/internal/leetcode"
+	"github.com/nguyen-duc-loc/lch/internal/leetcode"
 	"github.com/stretchr/testify/require"
 )
 
