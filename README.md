@@ -38,5 +38,5 @@ lch [flags]
 ## Installation
 
 ```bash
-go install github.com/nguyen-duc-loc/leetcode-helper@latest
+go install github.com/nguyen-duc-loc/lch@latest
 ```
