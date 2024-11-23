@@ -1,0 +1,55 @@
+name: Test
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  run_commands:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install lch
+        run: |
+          curl -L https://github.com/nguyen-duc-loc/lch/releases/download/v0.0.1/lch.linux-amd64.tar.gz | tar xvz
+          sudo mv lch /usr/bin/lch
+          which lch
+
+      - name: lch completion
+        run: source <(lch completion bash)
+
+      - name: lch config
+        run: lch config -u nguyenducloc -l cpp
+
+      - name: lch docs
+        run: lch docs
+
+      - name: lch profile
+        run: |
+          lch profile
+          lch profile -u numb3r5
+
+      - name: lch rating
+        run: |
+          lch rating
+          lch rating -u numb3r5
+
+      - name: lch solution
+        run: |
+          lch solution today
+          lch solution today -l=java
+          lch solution today -l=py
+          lch solution 1
+          lch solution 1 -l=java
+          lch solution 1 -l=py
+
+      - name: lch stats
+        run: |
+          lch stats
+          lch stats -u numb3r5
+
+      - name: lch submissions
+        run: |
+          lch sm
+          lch sm -u numb3r5
