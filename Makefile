@@ -9,6 +9,13 @@ help:
 docs:
 	@go run main.go docs -d ./docs
 
+## readme: generate README.md file
+.PHONY: readme
+readme: docs
+	@cp docs/lch.md README.md
+	@echo "## Installation\n\n\`\`\`bash\ngo install github.com/nguyen-duc-loc/leetcode-helper@latest\n\`\`\`" >> README.md
+	@echo "README.md has been successfully created"
+
 ## test: test all code
 .PHONY: test
 test:
