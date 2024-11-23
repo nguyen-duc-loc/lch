@@ -10,7 +10,7 @@ lch rating [flags]
 
 ```
   -h, --help              help for rating
-  -u, --username string   username to view rating contest and recently attended contests (default username can be defined in $HOME/.lch.yaml or by using [3m<lch config [flags]>[23m
+  -u, --username string   username to view rating contest and recently attended contests (default username can be defined in $HOME/.lch.yaml or by using <lch config [flags]>)
 ```
 
 ### SEE ALSO

@@ -6,11 +6,12 @@ A command-line tool designed to streamline your Leetcode experience
 
 Leetcode Helper is a powerful command-line tool that empowers you to efficiently navigate and conquer Leetcode challenges. Key features include:
 
-- [1mUser Profile Fetching[22m: Easily retrieve detailed information about any Leetcode user, including their submission history, ratings, and more.
+- User profile fetching: Easily retrieve detailed information about any Leetcode user, including their submission history, ratings, and more.
 
-- [1mProblem Content Retrieval[22m: Effortlessly fetch the problem statement, constraints, and examples for any Leetcode problem.
+- Problem content retrieval: Effortlessly fetch the problem statement, constraints, and examples for any Leetcode problem.
 
-- [1mSolution Access[22m: Gain access to a curated collection of solutions for various Leetcode problems, written in popular programming languages.
+- Solution Access: Gain access to a curated collection of solutions for various Leetcode problems, written in popular programming languages.
+
 
 ```
 lch [flags]
