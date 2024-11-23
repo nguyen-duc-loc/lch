@@ -25,7 +25,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/nguyen-duc-loc/leetcode-helper/utils"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -40,16 +39,14 @@ var rootCmd = &cobra.Command{
 	Version: "0.1",
 	Use:     "lch",
 	Short:   "A command-line tool designed to streamline your Leetcode experience",
-	Long: fmt.Sprintf(`Leetcode Helper is a powerful command-line tool that empowers you to efficiently navigate and conquer Leetcode challenges. Key features include:
+	Long: `Leetcode Helper is a powerful command-line tool that empowers you to efficiently navigate and conquer Leetcode challenges. Key features include:
 
-- %s: Easily retrieve detailed information about any Leetcode user, including their submission history, ratings, and more.
+- User profile fetching: Easily retrieve detailed information about any Leetcode user, including their submission history, ratings, and more.
 
-- %s: Effortlessly fetch the problem statement, constraints, and examples for any Leetcode problem.
+- Problem content retrieval: Effortlessly fetch the problem statement, constraints, and examples for any Leetcode problem.
 
-- %s: Gain access to a curated collection of solutions for various Leetcode problems, written in popular programming languages.`,
-		utils.BoldText("User Profile Fetching"),
-		utils.BoldText("Problem Content Retrieval"),
-		utils.BoldText("Solution Access")),
+- Solution Access: Gain access to a curated collection of solutions for various Leetcode problems, written in popular programming languages.
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Usage()
 	},

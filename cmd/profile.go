@@ -95,5 +95,5 @@ var profileCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(profileCmd)
 
-	profileCmd.Flags().StringP(profileCmdUsernameFlag, "u", "", fmt.Sprintf("username to view profile (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
+	profileCmd.Flags().StringP(profileCmdUsernameFlag, "u", "", "username to view profile (default username can be defined in $HOME/.lch.yaml or by using <lch config [flags]>)")
 }

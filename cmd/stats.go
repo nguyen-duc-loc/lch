@@ -146,5 +146,5 @@ var statsCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(statsCmd)
 
-	statsCmd.Flags().StringP(statsCmdUsernameFlag, "u", "", fmt.Sprintf("username to view stats (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
+	statsCmd.Flags().StringP(statsCmdUsernameFlag, "u", "", "username to view stats (default username can be defined in $HOME/.lch.yaml or by using <lch config [flags]>)")
 }

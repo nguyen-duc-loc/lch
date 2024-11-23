@@ -102,5 +102,5 @@ var submissionsCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(submissionsCmd)
 
-	submissionsCmd.Flags().StringP(submissionsCmdUsernameFlag, "u", "", fmt.Sprintf("username to view profile (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
+	submissionsCmd.Flags().StringP(submissionsCmdUsernameFlag, "u", "", "username to view profile (default username can be defined in $HOME/.lch.yaml or by using <lch config [flags]>)")
 }

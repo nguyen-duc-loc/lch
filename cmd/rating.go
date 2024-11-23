@@ -144,5 +144,5 @@ var ratingCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(ratingCmd)
 
-	ratingCmd.Flags().StringP(ratingCmdUsernameFlag, "u", "", fmt.Sprintf("username to view rating contest and recently attended contests (default username can be defined in $HOME/.lch.yaml or by using %s", utils.ItalicText("<lch config [flags]>")))
+	ratingCmd.Flags().StringP(ratingCmdUsernameFlag, "u", "", "username to view rating contest and recently attended contests (default username can be defined in $HOME/.lch.yaml or by using <lch config [flags]>)")
 }
