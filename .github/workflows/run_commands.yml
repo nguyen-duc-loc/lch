@@ -43,6 +43,12 @@ jobs:
           lch solution 1
           lch solution 1 -l=java
           lch solution 1 -l=py
+          lch solution 3000
+          lch solution 3000 -l=java
+          lch solution 3000 -l=py
+          lch solution 2618 -l=ts
+          lch solution 175 -l=sql
+          lch solution 192 -l=sh
 
       - name: lch stats
         run: |
