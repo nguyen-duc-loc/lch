@@ -74,8 +74,13 @@ func (s *ProblemService) GetByID(problemID int32) (*Problem, error) {
 		}
 	`)
 
+	skip := problemID - 1
+	if skip >= 358 {
+		skip--
+	}
+
 	gqlReq.Var("categorySlug", "")
-	gqlReq.Var("skip", problemID-1)
+	gqlReq.Var("skip", skip)
 	gqlReq.Var("limit", 1)
 	gqlReq.Var("filters", QuestionListFilterInput{})
 
